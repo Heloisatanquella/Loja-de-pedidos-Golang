@@ -7,6 +7,7 @@ import (
 
 func main() {
 	fmt.Println("Loja de pedidos ok!")
-	entities.DadosCompletos()
-	entities.DadosItem()
+	entities.DadosCompletos(entities.Cliente{})
+	entities.DadosDoPedido(entities.Pedido{})
+	entities.DadosProduto(entities.Produto{})
 }
