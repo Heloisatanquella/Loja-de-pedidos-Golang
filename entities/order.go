@@ -3,15 +3,15 @@ package entities
 import "fmt"
 
 type ItemPedido struct {
-	Nome       string  `json:"nome"`
-	Quantidade uint    `json:"quantidade"`
-	Total      float64 `json:"total"`
+	Nome       string
+	Quantidade uint
+	Total      float64
 }
 
 type Pedido struct {
-	Produtos      []interface{} `json:"produtos"`
-	TotalDoPedido float64       `json:"totaldopedido"`
-	Cliente       string        `json:"cliente"`
+	Produtos      []interface{}
+	TotalDoPedido float64
+	Cliente       string
 }
 
 func (i ItemPedido) DadosItem() {

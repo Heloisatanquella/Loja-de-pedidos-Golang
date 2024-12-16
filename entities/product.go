@@ -3,10 +3,10 @@ package entities
 import "fmt"
 
 type Produto struct {
-	Nome       string  `json:"nome"`
-	Descricao  string  `json:"descricao"`
-	Preco      float64 `json:"preco"`
-	Quantidade uint    `json:"quantidade"`
+	Nome       string
+	Descricao  string
+	Preco      float64
+	Quantidade uint
 }
 
 func DadosProduto(p Produto) {
