@@ -4,14 +4,13 @@ import (
 	"fmt"
 )
 
-type Client struct {
-	Name      string `json:"name"`
+type Cliente struct {
+	Nome      string `json:"nome"`
 	Sobrenome string `json:"sobrenome"`
 	Email     string `json:"email"`
 	Telefone  string `json:"telefone"`
 }
 
-func DadosCompletos() {
-	var client Client
-	fmt.Printf("Nome completo: %s %s; E-mail: %s; Telefone: %s;\n", client.Name, client.Sobrenome, client.Email, client.Telefone)
+func DadosCompletos(c Cliente) {
+	fmt.Printf("Nome completo: %s %s; E-mail: %s; Telefone: %s;\n", c.Nome, c.Sobrenome, c.Email, c.Telefone)
 }
