@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"loja-de-pedidos-golang/entities"
+)
 
 func main() {
 	fmt.Println("Loja de pedidos ok!")
+	entities.DadosCompletos()
 }
