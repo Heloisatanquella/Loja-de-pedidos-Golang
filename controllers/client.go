@@ -4,17 +4,19 @@ import (
 	"bufio"
 	"fmt"
 	"loja-de-pedidos-golang/entities"
-	"loja-de-pedidos-golang/utils"
 	"os"
 	"strings"
 )
 
-func BuscarCliente(email string, clientesLista []entities.Cliente) bool {
+func BuscarCliente(email string, clientesLista []entities.Cliente) *entities.Cliente {
 	email = strings.ToLower(strings.TrimSpace(email))
 
-	return utils.Buscar(clientesLista, func(cliente entities.Cliente) bool {
-		return strings.ToLower(strings.TrimSpace(cliente.Email)) == email
-	})
+	for _, cliente := range clientesLista {
+		if strings.ToLower(strings.TrimSpace(cliente.Email)) == email {
+			return &cliente
+		}
+	}
+	return nil
 }
 
 func CadastrarCliente(clientesLista *[]entities.Cliente) entities.Cliente {
@@ -34,7 +36,7 @@ func CadastrarCliente(clientesLista *[]entities.Cliente) entities.Cliente {
 		email, _ = reader.ReadString('\n')
 		email = strings.TrimSpace(email)
 
-		if BuscarCliente(email, *clientesLista) {
+		if BuscarCliente(email, *clientesLista) != nil {
 			fmt.Printf("\nE-mail já cadastrado. Tente novamente.\n")
 		} else {
 			break
@@ -58,4 +60,23 @@ func CadastrarCliente(clientesLista *[]entities.Cliente) entities.Cliente {
 	novoCliente.DadosCompletos()
 
 	return novoCliente
+}
+
+func PedidoClienteExistente(email string, clientesLista []entities.Cliente) []entities.Pedido {
+	cliente := BuscarCliente(email, clientesLista)
+
+	if cliente == nil {
+		return nil
+	}
+
+	var produtos []entities.Produto
+	var pedidos []entities.Pedido
+
+	Pedidos(*cliente, &produtos, &pedidos)
+
+	if len(pedidos) == 0 {
+		fmt.Println("Nenhum pedido encontrado para este cliente.")
+		return nil
+	}
+	return pedidos
 }
