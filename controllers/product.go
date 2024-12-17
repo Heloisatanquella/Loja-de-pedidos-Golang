@@ -25,11 +25,11 @@ func Produto(produtosEmEstoque *[]entities.Produto) {
 	var quantidade uint
 
 	for {
-		fmt.Printf("\nDigite o nome do produto: ")
+		fmt.Print("\nDigite o nome do produto: ")
 		fmt.Scanln(&nomeProduto)
 
 		if BuscarProduto(nomeProduto, *produtosEmEstoque) != nil {
-			fmt.Println("\nProduto já existente. Tente novamente.")
+			fmt.Print("\nProduto já existente. Tente novamente.")
 		} else {
 			break
 		}
@@ -43,7 +43,7 @@ func Produto(produtosEmEstoque *[]entities.Produto) {
 		_, err := fmt.Scanln(&preco)
 
 		if err != nil || preco <= 0 {
-			fmt.Println("\nO valor inserido não é válido! Tente novamente.")
+			fmt.Print("\nO valor inserido não é válido! Tente novamente.")
 			var limpar string
 			fmt.Scanln(&limpar)
 			continue
@@ -52,11 +52,11 @@ func Produto(produtosEmEstoque *[]entities.Produto) {
 	}
 
 	for {
-		fmt.Printf("\nInsira a quantidade em estoque: ")
+		fmt.Print("\nInsira a quantidade em estoque: ")
 		_, err := fmt.Scanln(&quantidade)
 
 		if err != nil || quantidade <= 0 {
-			fmt.Println("\nEntrada inválida. Por favor, insira um número inteiro positivo.")
+			fmt.Print("\nEntrada inválida. Por favor, insira um número inteiro positivo.")
 			var limpar string
 			fmt.Scanln(&limpar)
 			continue

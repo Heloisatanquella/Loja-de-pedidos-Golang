@@ -17,7 +17,7 @@ func Pedidos(cliente entities.Cliente, produtosEmEstoque *[]entities.Produto, li
 		for {
 			var nomeProduto string
 
-			fmt.Printf("\nDigite o nome do produto: \n")
+			fmt.Print("\nDigite o nome do produto: \n")
 			fmt.Scanln(&nomeProduto)
 
 			produto = BuscarProduto(nomeProduto, *produtosEmEstoque)
