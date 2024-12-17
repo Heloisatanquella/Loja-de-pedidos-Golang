@@ -80,3 +80,13 @@ func PedidoClienteExistente(email string, clientesLista []entities.Cliente) []en
 	}
 	return pedidos
 }
+
+func PedidoCadastroCliente(clientesLista []entities.Cliente) {
+	fmt.Printf("\nÉ necessário cadastrar um cliente!")
+	cliente := CadastrarCliente(&clientesLista)
+
+	var produtos []entities.Produto
+	var pedidos []entities.Pedido
+
+	Pedidos(cliente, &produtos, &pedidos)
+}
