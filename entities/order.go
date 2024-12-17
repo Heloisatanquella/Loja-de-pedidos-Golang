@@ -9,7 +9,7 @@ type ItemPedido struct {
 }
 
 type Pedido struct {
-	Produtos      []interface{}
+	Produtos      []ItemPedido
 	TotalDoPedido float64
 	Cliente       string
 }
@@ -19,11 +19,9 @@ func (i ItemPedido) DadosItem() {
 }
 
 func DadosDoPedido(p Pedido) {
-	fmt.Printf("\nProdutos adicionados ao pedido: ")
-	for _, produto := range p.Produtos {
-		if item, ok := produto.(ItemPedido); ok {
-			item.DadosItem()
-		}
+	fmt.Println("\nProdutos adicionados ao pedido:")
+	for _, item := range p.Produtos {
+		item.DadosItem()
 	}
-	fmt.Printf("\nValor total do pedido: R$%.2f; Comprador: %s; \n", p.TotalDoPedido, p.Cliente)
+	fmt.Printf("\nValor total do pedido: R$%.2f; Comprador: %s;\n", p.TotalDoPedido, p.Cliente)
 }
