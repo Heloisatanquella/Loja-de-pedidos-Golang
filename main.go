@@ -2,20 +2,23 @@ package main
 
 import (
 	"fmt"
-	"loja-de-pedidos-golang/controllers"
-	"loja-de-pedidos-golang/entities"
+	"loja-de-pedidos-golang/menu"
 )
 
 func main() {
-	clientes := []entities.Cliente{
-		{Email: "teste@exemplo.com"},
-		{Email: "cliente@exemplo.com"},
+	for {
+		opcao := menu.MenuPrincipal()
+		switch opcao {
+		case 1:
+			menu.SubmenuCadastro()
+		case 2:
+			menu.SubmenuBusca()
+		case 3:
+			fmt.Println("Encerrando programa...")
+			return
+		default:
+			fmt.Println("Opção inválida, tente novamente.")
+		}
+
 	}
-
-	fmt.Println(controllers.BuscarCliente("teste@exemplo.com",
-		clientes))
-
-	var clientesLista []entities.Cliente
-	controllers.CadastrarCliente(&clientesLista)
-
 }

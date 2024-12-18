@@ -6,24 +6,20 @@ import (
 	"loja-de-pedidos-golang/entities"
 )
 
-func MenuPrincipal() {
-	for {
-		fmt.Print("\n Menu \n")
-		fmt.Print("1 - Cadastrar novo cliente, produto ou pedido")
-		fmt.Print("2 - Buscar clientes ou produtos")
-		fmt.Print("3 - Sair\n")
+func MenuPrincipal() int {
+	fmt.Println("=== Menu Principal ===")
+	fmt.Println("1. Cadastro")
+	fmt.Println("2. Busca")
+	fmt.Println("3. Sair")
+	fmt.Print("Escolha uma opção: ")
 
-		var opcao int
-		_, err := fmt.Scanln(&opcao)
-
-		if err != nil || opcao <= 0 || opcao >= 4 {
-			fmt.Print("\nO valor inserido é inválido!\n")
-		}
-		if opcao > 0 && opcao < 4 {
-			return
-		}
-		fmt.Print("\nO valor inserido é inválido!\n")
+	var opcao int
+	_, err := fmt.Scan(&opcao)
+	if err != nil {
+		fmt.Println("Erro ao ler a entrada, por favor digite um número.")
+		opcao = 0
 	}
+	return opcao
 }
 
 func SubmenuCadastro() {
